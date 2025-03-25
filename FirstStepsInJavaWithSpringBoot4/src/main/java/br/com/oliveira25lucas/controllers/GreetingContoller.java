@@ -15,7 +15,7 @@ public class GreetingContoller {
     private final AtomicLong counter = new AtomicLong();
 
 
-    // http://localhost:8080/greeting?name=Leandro
+    // http://localhost:8080/greeting?name=Lucas
     @RequestMapping("/greeting")
     public Greeting greeting(
         @RequestParam(value = "name", defaultValue = "Word")
