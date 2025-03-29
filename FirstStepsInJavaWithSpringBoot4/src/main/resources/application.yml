@@ -15,6 +15,7 @@ spring:
     open-in-view: false
 logging:
   level:
-    root: INFO
+    root: DEBUG
     br.com.erudio: DEBUG
+
 

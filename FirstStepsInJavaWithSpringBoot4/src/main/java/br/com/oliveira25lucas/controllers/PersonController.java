@@ -1,7 +1,6 @@
 package br.com.oliveira25lucas.controllers;
 
-import br.com.oliveira25lucas.data.dto.v1.PersonDTO;
-import br.com.oliveira25lucas.data.dto.v2.PersonDTOV2;
+import br.com.oliveira25lucas.data.dto.PersonDTO;
 import br.com.oliveira25lucas.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -42,9 +41,6 @@ public class PersonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public PersonDTOV2 create(@RequestBody PersonDTOV2 person) {
-        return service.createV2(person);
-    }
 
     @PutMapping(
             consumes = MediaType.APPLICATION_JSON_VALUE,

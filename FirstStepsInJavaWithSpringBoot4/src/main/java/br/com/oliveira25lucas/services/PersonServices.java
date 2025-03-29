@@ -1,12 +1,10 @@
 package br.com.oliveira25lucas.services;
 
-import br.com.oliveira25lucas.data.dto.v1.PersonDTO;
-import br.com.oliveira25lucas.data.dto.v2.PersonDTOV2;
+import br.com.oliveira25lucas.data.dto.PersonDTO;
 import br.com.oliveira25lucas.exception.ResourceNotFoundException;
 import static br.com.oliveira25lucas.mapper.ObjectMapper.parseListObjects;
 import static br.com.oliveira25lucas.mapper.ObjectMapper.parseObject;
 
-import br.com.oliveira25lucas.mapper.custom.PersonMapper;
 import br.com.oliveira25lucas.model.Person;
 import br.com.oliveira25lucas.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -27,7 +25,6 @@ public class PersonServices {
     PersonRepository repository;
 
     @Autowired
-    PersonMapper converter;
 
 
     public List<PersonDTO> findAll() {
@@ -53,13 +50,6 @@ public class PersonServices {
         return parseObject(repository.save(entity), PersonDTO.class);
     }
 
-    public PersonDTOV2 createV2(PersonDTOV2 person) {
-
-        logger.info("Creating one Person V2!");
-        var entity = converter.convertDTOtoEntity(person);
-
-        return converter.convertEntityToDTO(repository.save(entity));
-    }
 
     public PersonDTO update(PersonDTO person) {
 
