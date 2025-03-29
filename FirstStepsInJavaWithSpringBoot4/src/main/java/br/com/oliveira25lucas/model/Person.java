@@ -1,3 +1,4 @@
+
 package br.com.oliveira25lucas.model;
 
 import jakarta.persistence.*;

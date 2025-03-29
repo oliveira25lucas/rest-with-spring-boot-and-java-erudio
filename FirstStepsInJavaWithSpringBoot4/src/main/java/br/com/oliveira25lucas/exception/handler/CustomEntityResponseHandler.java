@@ -1,4 +1,5 @@
-package br.com.oliveira25lucas.exception.handler;
+
+package br.com.oliveira25lucas.exception.hadler;
 
 import br.com.oliveira25lucas.exception.ExceptionResponse;
 import br.com.oliveira25lucas.exception.ResourceNotFoundException;

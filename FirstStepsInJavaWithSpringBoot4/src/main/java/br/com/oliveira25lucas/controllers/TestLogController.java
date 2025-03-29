@@ -1,3 +1,4 @@
+
 package br.com.oliveira25lucas.controllers;
 
 import br.com.oliveira25lucas.services.PersonServices;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/api/test/v1")
 public class TestLogController {
 
     private Logger logger = LoggerFactory.getLogger(TestLogController.class.getName());

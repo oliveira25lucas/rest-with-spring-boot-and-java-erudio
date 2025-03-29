@@ -1,3 +1,4 @@
+
 package br.com.oliveira25lucas.mapper;
 
 import com.github.dozermapper.core.DozerBeanMapperBuilder;

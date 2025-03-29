@@ -1,10 +1,10 @@
+
 package br.com.oliveira25lucas.services;
 
 import br.com.oliveira25lucas.data.dto.PersonDTO;
 import br.com.oliveira25lucas.exception.ResourceNotFoundException;
 import static br.com.oliveira25lucas.mapper.ObjectMapper.parseListObjects;
 import static br.com.oliveira25lucas.mapper.ObjectMapper.parseObject;
-
 import br.com.oliveira25lucas.model.Person;
 import br.com.oliveira25lucas.repository.PersonRepository;
 import org.slf4j.Logger;
@@ -23,8 +23,6 @@ public class PersonServices {
 
     @Autowired
     PersonRepository repository;
-
-    @Autowired
 
 
     public List<PersonDTO> findAll() {
@@ -49,7 +47,6 @@ public class PersonServices {
 
         return parseObject(repository.save(entity), PersonDTO.class);
     }
-
 
     public PersonDTO update(PersonDTO person) {
 
