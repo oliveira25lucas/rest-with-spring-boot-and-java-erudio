@@ -1,4 +1,4 @@
-package br.com.oliveira25lucas.unittests.services;
+package br.com.oliveira25lucas.services;
 
 import br.com.oliveira25lucas.controllers.PersonController;
 import br.com.oliveira25lucas.data.dto.PersonDTO;
@@ -8,6 +8,7 @@ import static br.com.oliveira25lucas.mapper.ObjectMapper.parseListObjects;
 import static br.com.oliveira25lucas.mapper.ObjectMapper.parseObject;
 import br.com.oliveira25lucas.model.Person;
 import br.com.oliveira25lucas.repository.PersonRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class PersonServices {
         logger.info("Finding one Person!");
 
         var entity = repository.findById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
         var dto =  parseObject(entity, PersonDTO.class);
         addHateoasLinks(dto);
         return dto;
@@ -76,6 +77,21 @@ public class PersonServices {
         return dto;
     }
 
+    @Transactional
+    public PersonDTO disablePerson(Long id) {
+
+        logger.info("Disabling one Person!");
+
+        repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+        repository.disablePerson(id);
+
+        var entity = repository.findById(id).get();
+        var dto = parseObject(entity, PersonDTO.class);
+        addHateoasLinks(dto);
+        return dto;
+    }
+
     public void delete(Long id) {
 
         logger.info("Deleting one Person!");
@@ -90,6 +106,7 @@ public class PersonServices {
         dto.add(linkTo(methodOn(PersonController.class).findAll()).withRel("findAll").withType("GET"));
         dto.add(linkTo(methodOn(PersonController.class).create(dto)).withRel("create").withType("POST"));
         dto.add(linkTo(methodOn(PersonController.class).update(dto)).withRel("update").withType("PUT"));
+        dto.add(linkTo(methodOn(PersonController.class).disablePerson(dto.getId())).withRel("disable").withType("PATCH"));
         dto.add(linkTo(methodOn(PersonController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
     }
 }

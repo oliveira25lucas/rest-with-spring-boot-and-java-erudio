@@ -2,7 +2,7 @@ package br.com.oliveira25lucas.controllers;
 
 import br.com.oliveira25lucas.controllers.docs.BookControllerDocs;
 import br.com.oliveira25lucas.data.dto.BookDTO;
-import br.com.oliveira25lucas.unittests.services.BookServices;
+import br.com.oliveira25lucas.services.BookServices;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

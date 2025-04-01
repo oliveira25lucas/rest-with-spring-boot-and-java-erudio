@@ -1,4 +1,4 @@
-package br.com.oliveira25lucas.unittests.services;
+package br.com.oliveira25lucas.services;
 
 import br.com.oliveira25lucas.controllers.BookController;
 import br.com.oliveira25lucas.data.dto.BookDTO;
